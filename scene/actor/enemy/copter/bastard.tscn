@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://vkdag2afi1b0"]
+
+[ext_resource type="Script" uid="uid://doqtks2p036us" path="res://script/actor/enemy/enemy_copter.gd" id="1_cupul"]
+[ext_resource type="ArrayMesh" uid="uid://b3i203mk7r5jq" path="res://asset/model/copter/bastard/bastard.obj" id="2_cupul"]
+[ext_resource type="PackedScene" uid="uid://2tubrliubdyn" path="res://scene/actor/misc/rotor_red.tscn" id="3_ywq02"]
+[ext_resource type="PackedScene" uid="uid://x200ak3jngae" path="res://scene/fx/navigation light/navigation_light_red.tscn" id="4_r5jw0"]
+[ext_resource type="PackedScene" uid="uid://31l6lvled0p0" path="res://scene/fx/navigation light/navigation_light_green.tscn" id="5_f1sfx"]
+[ext_resource type="PackedScene" uid="uid://r1aawg8jnitr" path="res://scene/fx/muzzleflash.tscn" id="5_lopa5"]
+[ext_resource type="PackedScene" uid="uid://02y6ocqunst5" path="res://scene/actor/weapon/weapon_base.tscn" id="6_6inyj"]
+[ext_resource type="PackedScene" uid="uid://bmimjobsohdlb" path="res://scene/actor/weapon/projectile_bullet.tscn" id="7_elpoh"]
+[ext_resource type="PackedScene" uid="uid://dakjfltw10aj8" path="res://scene/actor/weapon/weapon_specs.tscn" id="8_to1aw"]
+
+[node name="Bastard" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_cupul")
+SPEED = 60.0
+DEVIATION = Vector3(10, 0, 15)
+COMBAT_DISTANCE = 70.0
+COLLISION_DAMAGE = 100.0
+WEAPON_PATH = NodePath("Weapon")
+ARMOR = 20.0
+COLLISION_LAYER = 8
+COLLISION_MASK = 1
+COLLISION_MESH_PATH = NodePath("Copter")
+metadata/_custom_type_script = ExtResource("1_cupul")
+
+[node name="Copter" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_cupul")
+skeleton = NodePath("../..")
+
+[node name="Rotor" parent="Copter" instance=ExtResource("3_ywq02")]
+transform = Transform3D(1.27172, 0, -0.795444, 0, 1, 0, 0.795444, 0, 1.27172, -0.0243477, 1.73702, -2.42788)
+
+[node name="NavigationLightRed" parent="Copter" instance=ExtResource("4_r5jw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.05234, -1.49295, -4.49415)
+
+[node name="NavigationLightGreen" parent="Copter" instance=ExtResource("5_f1sfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03676, -1.44882, -4.38522)
+
+[node name="MuzzleFlash3" parent="Copter" instance=ExtResource("5_lopa5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42591, -1.45109, -9.01129)
+
+[node name="MuzzleFlash2" parent="Copter" instance=ExtResource("5_lopa5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47897, -1.45109, -8.95132)
+
+[node name="MuzzleFlash" parent="Copter" instance=ExtResource("5_lopa5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0264559, -1.45109, -11.144)
+
+[node name="Weapon" parent="." instance=ExtResource("6_6inyj")]
+RATE_OF_FIRE = 200
+PROJECTILE_SCENE = ExtResource("7_elpoh")
+PROJECTILE_COLLISION_LAYER = 16
+PROJECTILE_COLLISION_MASK = 1
+PROJECTILE_DAMAGE_SCALE = 3.0
+
+[node name="Specs" parent="Weapon" instance=ExtResource("8_to1aw")]
+MUZZLES = Array[NodePath]([NodePath("../../Copter/MuzzleFlash"), NodePath("../../Copter/MuzzleFlash2"), NodePath("../../Copter/MuzzleFlash3")])

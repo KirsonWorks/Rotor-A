@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cmv0x2wrgxxcs"
+path="res://.godot/imported/swine.obj-d3792160377474735baf71f5921b34e8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/swine.obj-d3792160377474735baf71f5921b34e8.mesh"]
+
+source_file="res://asset/model/copter/swine/swine.obj"
+dest_files=["res://.godot/imported/swine.obj-d3792160377474735baf71f5921b34e8.mesh", "res://.godot/imported/swine.obj-d3792160377474735baf71f5921b34e8.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(0.9, 0.9, 0.9)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

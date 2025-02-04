@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=4 uid="uid://bwo0ixoi2n0yc"]
+
+[ext_resource type="Script" path="res://script/actor/weapon/projectile_base.gd" id="1_hajre"]
+[ext_resource type="Shader" path="res://asset/shader/fx/sprite.gdshader" id="3_ujnht"]
+[ext_resource type="Texture2D" uid="uid://dr52u6ibyu748" path="res://asset/texture/weapon/trace.tga" id="4_huc5i"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e60i3"]
+_surfaces = [{
+"aabb": AABB(-0.721035, -0.721035, -0.944563, 1.44207, 1.44207, 1.88913),
+"attribute_data": PackedByteArray("/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAA="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAABAAIAAAABAAIAAgABAAMAAgABAAMAAgABAAMABAAFAAYABgAFAAcA"),
+"name": "Muzzle_Flash",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////f/////8AAP9//////////38AAP//AAD/fwAA////fwAA/v////9////+/////38AAAAA////f///AAD///9//7//f/+//3//v/9//7//v/9//7//f/+//3//v/9/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0nyv"]
+render_priority = 0
+shader = ExtResource("3_ujnht")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/frames = Vector2i(4, 1)
+shader_parameter/frame = 2
+shader_parameter/intensity_min = 2.0
+shader_parameter/intensity_max = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/is_billboard = false
+shader_parameter/sprite = ExtResource("4_huc5i")
+
+[node name="ProjectileRay" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.37361)
+script = ExtResource("1_hajre")
+IS_RAY = true
+INITIAL_SPEED = 0.0
+ACCELERATION = 0.0
+DAMAGE = 450.0
+LIFE_TIME_LIMIT = 0.8
+COLLISION_RECT_DECREASE = 0.0
+COLLISION_MESH_PATH = NodePath("Mesh")
+metadata/_custom_type_script = ExtResource("1_hajre")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 100, 0, 0, -93.885)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_e60i3")
+surface_material_override/0 = SubResource("ShaderMaterial_i0nyv")

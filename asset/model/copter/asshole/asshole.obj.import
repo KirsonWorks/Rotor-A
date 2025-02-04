@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6bmpctypu6vd"
+path="res://.godot/imported/asshole.obj-e3f636a8493bd25f4fb9dc0cc19d2a5e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/asshole.obj-e3f636a8493bd25f4fb9dc0cc19d2a5e.mesh"]
+
+source_file="res://asset/model/copter/asshole/asshole.obj"
+dest_files=["res://.godot/imported/asshole.obj-e3f636a8493bd25f4fb9dc0cc19d2a5e.mesh", "res://.godot/imported/asshole.obj-e3f636a8493bd25f4fb9dc0cc19d2a5e.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ss1f0m32njb6"
+path="res://.godot/imported/sandbag.obj-75dad680c0a3e4ff6bcf5d74594c8b73.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sandbag.obj-75dad680c0a3e4ff6bcf5d74594c8b73.mesh"]
+
+source_file="res://asset/model/environment/sandbag/sandbag.obj"
+dest_files=["res://.godot/imported/sandbag.obj-75dad680c0a3e4ff6bcf5d74594c8b73.mesh", "res://.godot/imported/sandbag.obj-75dad680c0a3e4ff6bcf5d74594c8b73.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(1.2, 1.2, 1.2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

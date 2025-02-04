@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://4lwt6e0rdxbh"]
+
+[ext_resource type="Script" uid="uid://d04aj51bys8rg" path="res://script/actor/enemy/enemy_cannon.gd" id="1_nb3af"]
+[ext_resource type="Script" uid="uid://b8ixqia1qul11" path="res://script/actor/actor.gd" id="2_u88dt"]
+
+[node name="EnemyCannon" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_nb3af")
+COLLISION_LAYER = 8
+metadata/_custom_type_script = ExtResource("2_u88dt")

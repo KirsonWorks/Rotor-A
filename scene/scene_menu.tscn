@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://untdmk4hwuq2"]
+
+[ext_resource type="Script" path="res://script/scene_menu.gd" id="1_5cb8b"]
+[ext_resource type="PackedScene" uid="uid://c26dmlbshr7m5" path="res://scene/fx/cloud.tscn" id="2_ckdi2"]
+[ext_resource type="Texture2D" uid="uid://bt0whcfcfpvtg" path="res://asset/texture/logo.png" id="3_q0qvq"]
+
+[node name="SceneMenu" type="Node"]
+script = ExtResource("1_5cb8b")
+
+[node name="Clouds" parent="." instance=ExtResource("2_ckdi2")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TextureLogo" type="TextureRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -333.0
+offset_right = 256.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_q0qvq")
+
+[node name="Menu" type="VBoxContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -43.0
+offset_right = 101.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonStart" type="Button" parent="UI/Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "PLAY"
+
+[node name="ButtonQuit" type="Button" parent="UI/Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "QUIT"
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -34.0
+offset_right = 255.0
+offset_bottom = -11.0
+grow_vertical = 0
+text = "AUTHOR"
+
+[node name="CheckBoxFullscreen" type="CheckBox" parent="UI"]
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 49.0
+text = "FULLSCREEN"
+
+[connection signal="pressed" from="UI/Menu/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="UI/Menu/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="toggled" from="UI/CheckBoxFullscreen" to="." method="_on_check_box_fullscreen_toggled"]

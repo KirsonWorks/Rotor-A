@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyj6x0yjp01xh"]
+
+[ext_resource type="Script" path="res://script/actor/powerup/powerup_base.gd" id="1_fbp31"]
+[ext_resource type="Script" path="res://script/actor/powerup/powerup_health.gd" id="1_hemfj"]
+[ext_resource type="ArrayMesh" uid="uid://qadvo41sypm8" path="res://asset/model/powerup/health.obj" id="3_1phnm"]
+[ext_resource type="Shader" path="res://asset/shader/fx/sprite.gdshader" id="3_i8nfs"]
+[ext_resource type="Texture2D" uid="uid://l115bxk3ipr7" path="res://asset/texture/fx/halo.jpg" id="4_i8nfs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8nfs"]
+render_priority = 0
+shader = ExtResource("3_i8nfs")
+shader_parameter/tint = Color(0, 0.975206, 0.044145, 1)
+shader_parameter/frames = Vector2i(1, 1)
+shader_parameter/frame = null
+shader_parameter/intensity_min = 3.0
+shader_parameter/intensity_max = 5.0
+shader_parameter/frequency = 4.0
+shader_parameter/is_billboard = true
+shader_parameter/sprite = ExtResource("4_i8nfs")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1phnm"]
+material = SubResource("ShaderMaterial_i8nfs")
+size = Vector2(6.5, 6.5)
+
+[node name="PowerupHealth" type="Node3D"]
+script = ExtResource("1_hemfj")
+ARMOR = 0.1
+COLLISION_RECT_DECREASE = 0.0
+COLLISION_LAYER = 4
+COLLISION_MASK = 1
+COLLISION_MESH_PATH = NodePath("Health")
+metadata/_custom_type_script = ExtResource("1_fbp31")
+
+[node name="Halo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0944824)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_1phnm")
+
+[node name="Health" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = ExtResource("3_1phnm")

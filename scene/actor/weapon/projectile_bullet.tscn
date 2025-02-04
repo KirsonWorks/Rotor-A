@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmimjobsohdlb"]
+
+[ext_resource type="Script" path="res://script/actor/weapon/projectile_base.gd" id="1_nwjdp"]
+[ext_resource type="ArrayMesh" uid="uid://jrbyo0qlj1g1" path="res://asset/model/fx/muzzle-flash.obj" id="2_asouh"]
+[ext_resource type="Shader" path="res://asset/shader/fx/sprite.gdshader" id="3_8nh7s"]
+[ext_resource type="Texture2D" uid="uid://dr52u6ibyu748" path="res://asset/texture/weapon/trace.tga" id="4_asouh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0nyv"]
+render_priority = 0
+shader = ExtResource("3_8nh7s")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/frames = Vector2i(4, 1)
+shader_parameter/frame = 1
+shader_parameter/intensity_min = 1.0
+shader_parameter/intensity_max = 1.0
+shader_parameter/frequency = 0.0
+shader_parameter/is_billboard = false
+shader_parameter/sprite = ExtResource("4_asouh")
+
+[node name="ProjectileBullet" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.37361)
+script = ExtResource("1_nwjdp")
+LIFE_TIME_LIMIT = 1.2
+COLLISION_RECT_DECREASE = 0.0
+COLLISION_MESH_PATH = NodePath("Mesh")
+metadata/_custom_type_script = ExtResource("1_nwjdp")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 3, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_asouh")
+surface_material_override/0 = SubResource("ShaderMaterial_i0nyv")

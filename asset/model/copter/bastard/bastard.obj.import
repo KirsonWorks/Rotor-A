@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3i203mk7r5jq"
+path="res://.godot/imported/bastard.obj-11d589e2aba0c07d3b0f247f3934be45.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bastard.obj-11d589e2aba0c07d3b0f247f3934be45.mesh"]
+
+source_file="res://asset/model/copter/bastard/bastard.obj"
+dest_files=["res://.godot/imported/bastard.obj-11d589e2aba0c07d3b0f247f3934be45.mesh", "res://.godot/imported/bastard.obj-11d589e2aba0c07d3b0f247f3934be45.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

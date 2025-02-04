@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xglaco7d0e8c"
+path="res://.godot/imported/tiger.obj-04ed535854fa7d61b056f36cdf1c27dc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tiger.obj-04ed535854fa7d61b056f36cdf1c27dc.mesh"]
+
+source_file="res://asset/model/copter/tiger/tiger.obj"
+dest_files=["res://.godot/imported/tiger.obj-04ed535854fa7d61b056f36cdf1c27dc.mesh", "res://.godot/imported/tiger.obj-04ed535854fa7d61b056f36cdf1c27dc.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

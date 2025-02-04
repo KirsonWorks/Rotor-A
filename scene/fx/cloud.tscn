@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c26dmlbshr7m5"]
+
+[ext_resource type="Shader" uid="uid://db5muq1enenhk" path="res://asset/shader/fx/cloud.gdshader" id="1_chj7l"]
+[ext_resource type="Script" uid="uid://5rg3v8pf7bkj" path="res://script/fx/cloud.gd" id="1_rl161"]
+[ext_resource type="Texture2D" uid="uid://cwjcr747jpbi" path="res://asset/texture/fx/cloud.png" id="2_rd3gx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cxh4"]
+shader = ExtResource("1_chj7l")
+shader_parameter/offset = null
+shader_parameter/wind_direction = Vector2(-1, 0.5)
+shader_parameter/wind_speed = 0.05
+
+[node name="Clouds" type="CanvasLayer"]
+script = ExtResource("1_rl161")
+
+[node name="Texture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6cxh4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rd3gx")
+expand_mode = 2
+stretch_mode = 1

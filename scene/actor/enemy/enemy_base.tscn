@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmabee2ccvijm"]
+
+[ext_resource type="Script" uid="uid://tqdaietoyhgq" path="res://script/actor/enemy/enemy_base.gd" id="1_fike3"]
+[ext_resource type="Script" uid="uid://b8ixqia1qul11" path="res://script/actor/actor.gd" id="1_rrrhb"]
+
+[node name="EnemyBase" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_fike3")
+COLLISION_LAYER = 8
+COLLISION_MASK = 1
+metadata/_custom_type_script = ExtResource("1_rrrhb")

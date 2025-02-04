@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpk6ux3us3e1s"
+path="res://.godot/imported/reservoir.obj-004d2f706ed7f6f5e7a0596a8092f74e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/reservoir.obj-004d2f706ed7f6f5e7a0596a8092f74e.mesh"]
+
+source_file="res://asset/model/environment/reservoir/reservoir.obj"
+dest_files=["res://.godot/imported/reservoir.obj-004d2f706ed7f6f5e7a0596a8092f74e.mesh", "res://.godot/imported/reservoir.obj-004d2f706ed7f6f5e7a0596a8092f74e.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(2, 2, 2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

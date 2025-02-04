@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vt2dx4ksgba3"
+path="res://.godot/imported/rocks04.obj-2c97f30e43483d10ab3b5ed4c7bda8ed.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rocks04.obj-2c97f30e43483d10ab3b5ed4c7bda8ed.mesh"]
+
+source_file="res://asset/model/environment/rock/rocks04.obj"
+dest_files=["res://.godot/imported/rocks04.obj-2c97f30e43483d10ab3b5ed4c7bda8ed.mesh", "res://.godot/imported/rocks04.obj-2c97f30e43483d10ab3b5ed4c7bda8ed.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(2, 2, 2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

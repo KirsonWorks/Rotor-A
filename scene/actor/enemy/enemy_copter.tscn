@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh84gd6dv8tg"]
+
+[ext_resource type="Script" uid="uid://tqdaietoyhgq" path="res://script/actor/enemy/enemy_base.gd" id="1_asj70"]
+[ext_resource type="Script" uid="uid://doqtks2p036us" path="res://script/actor/enemy/enemy_copter.gd" id="1_ieyue"]
+
+[node name="EnemyCopter" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_ieyue")
+metadata/_custom_type_script = ExtResource("1_asj70")

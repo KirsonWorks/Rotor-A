@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jgd6tlci31r"]
+
+[ext_resource type="Script" uid="uid://b070pxhtao5vb" path="res://script/actor/powerup/powerup_base.gd" id="1_qeeg3"]
+[ext_resource type="Script" uid="uid://b8ixqia1qul11" path="res://script/actor/actor.gd" id="1_yp358"]
+
+[node name="PowerupBase" type="Node3D"]
+script = ExtResource("1_qeeg3")
+HEALTH_MAX = null
+ARMOR = 0.0
+COLLISION_RECT_DECREASE = null
+COLLISION_LAYER = 4
+COLLISION_MASK = 1
+COLLISION_MESH_PATH = null
+metadata/_custom_type_script = ExtResource("1_yp358")

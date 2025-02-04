@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cdfcpgorer5hr"
+path="res://.godot/imported/machinegun-base.obj-510caf8f78ca961467f8129c8d848589.mesh"
+
+[deps]
+
+files=["res://.godot/imported/machinegun-base.obj-510caf8f78ca961467f8129c8d848589.mesh"]
+
+source_file="res://asset/model/cannon/machinegun-base.obj"
+dest_files=["res://.godot/imported/machinegun-base.obj-510caf8f78ca961467f8129c8d848589.mesh", "res://.godot/imported/machinegun-base.obj-510caf8f78ca961467f8129c8d848589.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

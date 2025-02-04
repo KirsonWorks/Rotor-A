@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://x200ak3jngae"]
+
+[ext_resource type="Shader" uid="uid://gwkyx3ljnx11" path="res://asset/shader/fx/sprite.gdshader" id="1_thrua"]
+[ext_resource type="Texture2D" uid="uid://bj8syjxhxqmq0" path="res://asset/texture/fx/flare.jpg" id="2_76x87"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctssn"]
+render_priority = 0
+shader = ExtResource("1_thrua")
+shader_parameter/sprite = ExtResource("2_76x87")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/frames = Vector2i(4, 4)
+shader_parameter/frame = 7
+shader_parameter/intensive = 2.0
+shader_parameter/intensity_min = 0.0
+shader_parameter/intensity_max = 2.0
+shader_parameter/min_intensive = 0.0
+shader_parameter/flashing_frequency = 4.0
+shader_parameter/frequency = 4.0
+shader_parameter/is_billboard = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_x38hk"]
+material = SubResource("ShaderMaterial_ctssn")
+size = Vector2(1.5, 1.5)
+
+[node name="NavigationLightRed" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_x38hk")

@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://1w3dkx07miky"]
+
+[ext_resource type="Script" path="res://script/actor/player/player.gd" id="1_5dec4"]
+[ext_resource type="ArrayMesh" uid="uid://xglaco7d0e8c" path="res://asset/model/copter/tiger/tiger.obj" id="1_h0wyi"]
+[ext_resource type="PackedScene" uid="uid://bqwl0i8iriton" path="res://scene/actor/misc/rotor_yellow.tscn" id="2_5dec4"]
+[ext_resource type="Script" path="res://script/actor/actor.gd" id="2_mmjpn"]
+[ext_resource type="PackedScene" uid="uid://x200ak3jngae" path="res://scene/fx/navigation light/navigation_light_red.tscn" id="4_e487v"]
+[ext_resource type="PackedScene" uid="uid://31l6lvled0p0" path="res://scene/fx/navigation light/navigation_light_green.tscn" id="5_drba6"]
+[ext_resource type="PackedScene" uid="uid://r1aawg8jnitr" path="res://scene/fx/muzzleflash.tscn" id="6_x03lo"]
+[ext_resource type="PackedScene" uid="uid://bmimjobsohdlb" path="res://scene/actor/weapon/projectile_bullet.tscn" id="8_582cr"]
+[ext_resource type="PackedScene" uid="uid://dttkopk2vfcvh" path="res://scene/actor/weapon/projectile_fireball.tscn" id="9_ccchy"]
+[ext_resource type="PackedScene" uid="uid://bwo0ixoi2n0yc" path="res://scene/actor/weapon/projectile_ray.tscn" id="9_tcfvv"]
+[ext_resource type="PackedScene" uid="uid://dakjfltw10aj8" path="res://scene/actor/weapon/weapon_specs.tscn" id="10_avsla"]
+[ext_resource type="PackedScene" uid="uid://02y6ocqunst5" path="res://scene/actor/weapon/weapon_base.tscn" id="11_ccchy"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_5dec4")
+COLLISION_LAYER = 1
+COLLISION_MESH_PATH = NodePath("Tiger")
+metadata/_custom_type_script = ExtResource("2_mmjpn")
+
+[node name="Tiger" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0263419, 0, 0)
+mesh = ExtResource("1_h0wyi")
+
+[node name="Rotor" parent="Tiger" instance=ExtResource("2_5dec4")]
+transform = Transform3D(0.847958, 0, -0.530387, 0, 1, 0, 0.530387, 0, 0.847958, 0, 1.97359, -0.0923023)
+
+[node name="NavigationLightRed" parent="Tiger" instance=ExtResource("4_e487v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91588, -1.31316, -1.8436)
+skeleton = NodePath("../..")
+
+[node name="NavigationLightGreen" parent="Tiger" instance=ExtResource("5_drba6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90329, -1.28298, -1.84443)
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash" parent="Tiger" instance=ExtResource("6_x03lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0290427, -0.676481, -7.0956)
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash2" parent="Tiger" instance=ExtResource("6_x03lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34033, -1.58527, -4.05144)
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash5" parent="Tiger" instance=ExtResource("6_x03lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41421, -1.58527, -4.05144)
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash3" parent="Tiger" instance=ExtResource("6_x03lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13115, -1.78284, -4.66594)
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash4" parent="Tiger" instance=ExtResource("6_x03lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.07558, -1.78284, -4.66594)
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash6" parent="Tiger" instance=ExtResource("6_x03lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84199, -0.778226, -5.33492)
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash7" parent="Tiger" instance=ExtResource("6_x03lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.836783, -0.778226, -5.33492)
+skeleton = NodePath("../..")
+
+[node name="Golden Fear" parent="." instance=ExtResource("11_ccchy")]
+RATE_OF_FIRE = 450
+PROJECTILE_SCENE = ExtResource("8_582cr")
+PROJECTILE_COLLISION_LAYER = 2
+PROJECTILE_COLLISION_MASK = 8
+
+[node name="Specs1" parent="Golden Fear" instance=ExtResource("10_avsla")]
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash")])
+
+[node name="Specs2" parent="Golden Fear" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 2
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash6"), NodePath("../../Tiger/MuzzleFlash7")])
+DEVIATIONS = Array[float]([1.0, -1.0])
+
+[node name="Specs3" parent="Golden Fear" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 4
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash"), NodePath("../../Tiger/MuzzleFlash2"), NodePath("../../Tiger/MuzzleFlash5")])
+DEVIATIONS = Array[float]([0.0, 1.5, -1.5])
+
+[node name="Specs4" parent="Golden Fear" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 6
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash"), NodePath("../../Tiger/MuzzleFlash2"), NodePath("../../Tiger/MuzzleFlash5"), NodePath("../../Tiger/MuzzleFlash3"), NodePath("../../Tiger/MuzzleFlash4")])
+DEVIATIONS = Array[float]([0.0, 1.0, -1.0, 2.0, -2.0])
+
+[node name="Fiery Death" parent="." instance=ExtResource("11_ccchy")]
+RATE_OF_FIRE = 600
+PROJECTILE_SCENE = ExtResource("9_ccchy")
+PROJECTILE_COLLISION_LAYER = 2
+PROJECTILE_COLLISION_MASK = 8
+
+[node name="Specs1" parent="Fiery Death" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 1
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash")])
+
+[node name="Specs2" parent="Fiery Death" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 3
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash6"), NodePath("../../Tiger/MuzzleFlash7")])
+DEVIATIONS = Array[float]([1.0, -1.0])
+
+[node name="Specs3" parent="Fiery Death" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 5
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash"), NodePath("../../Tiger/MuzzleFlash2"), NodePath("../../Tiger/MuzzleFlash5")])
+DEVIATIONS = Array[float]([0.0, 1.5, -1.5])
+
+[node name="Specs4" parent="Fiery Death" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 7
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash"), NodePath("../../Tiger/MuzzleFlash2"), NodePath("../../Tiger/MuzzleFlash5"), NodePath("../../Tiger/MuzzleFlash3"), NodePath("../../Tiger/MuzzleFlash4")])
+DEVIATIONS = Array[float]([0.0, 1.0, -1.0, 2.0, -2.0])
+
+[node name="Specs5" parent="Fiery Death" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 9
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash"), NodePath("../../Tiger/MuzzleFlash2"), NodePath("../../Tiger/MuzzleFlash5"), NodePath("../../Tiger/MuzzleFlash3"), NodePath("../../Tiger/MuzzleFlash4"), NodePath("../../Tiger/MuzzleFlash6"), NodePath("../../Tiger/MuzzleFlash7")])
+DEVIATIONS = Array[float]([0.0, 1.0, -1.0, 2.0, -2.0])
+
+[node name="Bloody Ray" parent="." instance=ExtResource("11_ccchy")]
+PROJECTILE_SCENE = ExtResource("9_tcfvv")
+PROJECTILE_COLLISION_LAYER = 2
+PROJECTILE_COLLISION_MASK = 8
+
+[node name="Specs1" parent="Bloody Ray" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 8
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash")])
+
+[node name="Specs2" parent="Bloody Ray" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 10
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash2"), NodePath("../../Tiger/MuzzleFlash5")])
+
+[node name="Specs3" parent="Bloody Ray" instance=ExtResource("10_avsla")]
+UPGRADE_INDEX = 11
+MUZZLES = Array[NodePath]([NodePath("../../Tiger/MuzzleFlash"), NodePath("../../Tiger/MuzzleFlash3"), NodePath("../../Tiger/MuzzleFlash4")])

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7tkktx5o6g1r"
+path="res://.godot/imported/hangar.obj-f1d6b66c340f7e07804d25506321fe5e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hangar.obj-f1d6b66c340f7e07804d25506321fe5e.mesh"]
+
+source_file="res://asset/model/environment/building/hangar/hangar.obj"
+dest_files=["res://.godot/imported/hangar.obj-f1d6b66c340f7e07804d25506321fe5e.mesh", "res://.godot/imported/hangar.obj-f1d6b66c340f7e07804d25506321fe5e.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(1.5, 1.5, 1.5)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

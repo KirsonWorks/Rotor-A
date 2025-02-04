@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://cm4018wcm8mf4"]
+
+[ext_resource type="Script" uid="uid://b070pxhtao5vb" path="res://script/actor/powerup/powerup_base.gd" id="1_2nn63"]
+[ext_resource type="Script" uid="uid://bmyr18u2jqgql" path="res://script/actor/powerup/powerup_upgrade.gd" id="1_u618u"]
+[ext_resource type="Shader" uid="uid://gwkyx3ljnx11" path="res://asset/shader/fx/sprite.gdshader" id="3_co7u8"]
+[ext_resource type="ArrayMesh" uid="uid://pu1foht8hfs3" path="res://asset/model/powerup/upgrade.obj" id="3_i5gh3"]
+[ext_resource type="Texture2D" uid="uid://l115bxk3ipr7" path="res://asset/texture/fx/halo.jpg" id="4_j6oah"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x44lf"]
+render_priority = 0
+shader = ExtResource("3_co7u8")
+shader_parameter/sprite = ExtResource("4_j6oah")
+shader_parameter/tint = Color(1, 0.407399, 0, 1)
+shader_parameter/frames = Vector2i(1, 1)
+shader_parameter/frame = null
+shader_parameter/intensity_min = 3.0
+shader_parameter/intensity_max = 5.0
+shader_parameter/frequency = 4.0
+shader_parameter/is_billboard = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_3y3iu"]
+material = SubResource("ShaderMaterial_x44lf")
+size = Vector2(6.5, 6.5)
+
+[node name="PowerupUpgrade" type="Node3D"]
+script = ExtResource("1_u618u")
+COLLISION_RECT_DECREASE = 0.0
+COLLISION_LAYER = 4
+COLLISION_MASK = 1
+COLLISION_MESH_PATH = NodePath("Upgrade")
+metadata/_custom_type_script = ExtResource("1_2nn63")
+
+[node name="Halo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0944824)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3y3iu")
+
+[node name="Upgrade" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = ExtResource("3_i5gh3")

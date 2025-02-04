@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://iwqanp0nd1dr"]
+
+[ext_resource type="Script" uid="uid://5tpdxl80oqa4" path="res://script/actor/enemy/enemy_plane.gd" id="1_4exp8"]
+[ext_resource type="ArrayMesh" uid="uid://yc04namh3it0" path="res://asset/model/plane/mig/mig.obj" id="2_cx5m2"]
+[ext_resource type="PackedScene" uid="uid://02y6ocqunst5" path="res://scene/actor/weapon/weapon_base.tscn" id="3_bki60"]
+[ext_resource type="PackedScene" uid="uid://r1aawg8jnitr" path="res://scene/fx/muzzleflash.tscn" id="3_eay7j"]
+[ext_resource type="PackedScene" uid="uid://x200ak3jngae" path="res://scene/fx/navigation light/navigation_light_red.tscn" id="4_megq0"]
+[ext_resource type="PackedScene" uid="uid://bmimjobsohdlb" path="res://scene/actor/weapon/projectile_bullet.tscn" id="5_ajvq2"]
+[ext_resource type="PackedScene" uid="uid://31l6lvled0p0" path="res://scene/fx/navigation light/navigation_light_green.tscn" id="5_r8isd"]
+[ext_resource type="PackedScene" uid="uid://dakjfltw10aj8" path="res://scene/actor/weapon/weapon_specs.tscn" id="6_megq0"]
+
+[node name="Mig" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_4exp8")
+SPEED = 7.0
+COLLISION_DAMAGE = 50.0
+WEAPON_PATH = NodePath("Minigun")
+ARMOR = 3.0
+COLLISION_LAYER = 8
+COLLISION_MASK = 1
+COLLISION_MESH_PATH = NodePath("Plane")
+metadata/_custom_type_script = ExtResource("1_4exp8")
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_cx5m2")
+
+[node name="MuzzleFlash" parent="Plane" instance=ExtResource("3_eay7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78362, 0.438802, -2.34363)
+
+[node name="MuzzleFlash2" parent="Plane" instance=ExtResource("3_eay7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17105, 0.438802, -2.21558)
+
+[node name="NavigationLightRed" parent="Plane" instance=ExtResource("4_megq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96264, 1.03469, 1.12467)
+skeleton = NodePath("../..")
+
+[node name="NavigationLightGreen" parent="Plane" instance=ExtResource("5_r8isd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82768, 1.03469, 1.12467)
+skeleton = NodePath("../NavigationLightRed")
+
+[node name="Minigun" parent="." instance=ExtResource("3_bki60")]
+RATE_OF_FIRE = 200
+PROJECTILE_SCENE = ExtResource("5_ajvq2")
+PROJECTILE_COLLISION_LAYER = 16
+PROJECTILE_COLLISION_MASK = 1
+PROJECTILE_DAMAGE_SCALE = 3.0
+
+[node name="Specs" parent="Minigun" instance=ExtResource("6_megq0")]
+MUZZLES = Array[NodePath]([NodePath("../../Plane/MuzzleFlash"), NodePath("../../Plane/MuzzleFlash2")])

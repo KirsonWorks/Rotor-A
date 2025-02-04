@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpk6eei8n80p4"]
+
+[ext_resource type="Script" uid="uid://d04aj51bys8rg" path="res://script/actor/enemy/enemy_cannon.gd" id="1_ffj3x"]
+[ext_resource type="ArrayMesh" uid="uid://cdfcpgorer5hr" path="res://asset/model/cannon/machinegun-base.obj" id="3_6efeh"]
+[ext_resource type="PackedScene" uid="uid://x200ak3jngae" path="res://scene/fx/navigation light/navigation_light_red.tscn" id="3_o71r3"]
+[ext_resource type="ArrayMesh" uid="uid://c3wpcwawykpue" path="res://asset/model/cannon/machinegun.obj" id="4_0upcr"]
+[ext_resource type="PackedScene" uid="uid://02y6ocqunst5" path="res://scene/actor/weapon/weapon_base.tscn" id="5_3ebeq"]
+[ext_resource type="ArrayMesh" uid="uid://nq0uwc0ifvas" path="res://asset/model/cannon/machinegun-guns.obj" id="5_ajup7"]
+[ext_resource type="PackedScene" uid="uid://r1aawg8jnitr" path="res://scene/fx/muzzleflash.tscn" id="5_uwpau"]
+[ext_resource type="PackedScene" uid="uid://bmimjobsohdlb" path="res://scene/actor/weapon/projectile_bullet.tscn" id="6_uwpau"]
+[ext_resource type="PackedScene" uid="uid://dakjfltw10aj8" path="res://scene/actor/weapon/weapon_specs.tscn" id="8_o71r3"]
+
+[node name="MachineGun" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_ffj3x")
+COMBAT_DISTANCE = 200.0
+GUN_PATH = NodePath("Support/Gun")
+GUN_SUPPORT_PATH = NodePath("Support")
+WEAPON_PATH = NodePath("Gun")
+HEALTH = 75.0
+COLLISION_LAYER = 8
+COLLISION_MESH_PATH = NodePath("Base")
+metadata/_custom_type_script = ExtResource("1_ffj3x")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_6efeh")
+
+[node name="NavigationLightRed" parent="Base" instance=ExtResource("3_o71r3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.01732, 0)
+skeleton = NodePath("../..")
+
+[node name="Support" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.891548, 0)
+mesh = ExtResource("4_0upcr")
+
+[node name="Gun" type="MeshInstance3D" parent="Support"]
+transform = Transform3D(1, 0, 0, 0, 0.914402, -0.404806, 0, 0.404806, 0.914402, 0, 2.55, 0)
+mesh = ExtResource("5_ajup7")
+skeleton = NodePath("../..")
+
+[node name="MuzzleFlash" parent="Support/Gun" instance=ExtResource("5_uwpau")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.725578, 0, -10.1564)
+
+[node name="MuzzleFlash2" parent="Support/Gun" instance=ExtResource("5_uwpau")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.914266, 4.84288e-07, -10.2333)
+
+[node name="Gun" parent="." instance=ExtResource("5_3ebeq")]
+RATE_OF_FIRE = 120
+PROJECTILE_SCENE = ExtResource("6_uwpau")
+PROJECTILE_COLLISION_LAYER = 16
+PROJECTILE_COLLISION_MASK = 1
+
+[node name="Specs" parent="Gun" instance=ExtResource("8_o71r3")]
+MUZZLES = Array[NodePath]([NodePath("../../Support/Gun/MuzzleFlash"), NodePath("../../Support/Gun/MuzzleFlash2")])

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdw4g1pciul1e"]
+
+[ext_resource type="Script" uid="uid://5tpdxl80oqa4" path="res://script/actor/enemy/enemy_plane.gd" id="1_o2puu"]
+[ext_resource type="Script" uid="uid://b8ixqia1qul11" path="res://script/actor/actor.gd" id="2_r57hp"]
+
+[node name="EnemyPlane" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_o2puu")
+COLLISION_LAYER = 8
+COLLISION_MASK = 1
+metadata/_custom_type_script = ExtResource("2_r57hp")

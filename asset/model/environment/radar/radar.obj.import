@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bixadcmjmdi10"
+path="res://.godot/imported/radar.obj-2e4d96ee9ce32a212e1425b385710b4c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/radar.obj-2e4d96ee9ce32a212e1425b385710b4c.mesh"]
+
+source_file="res://asset/model/environment/radar/radar.obj"
+dest_files=["res://.godot/imported/radar.obj-2e4d96ee9ce32a212e1425b385710b4c.mesh", "res://.godot/imported/radar.obj-2e4d96ee9ce32a212e1425b385710b4c.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(1.3, 1.3, 1.3)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

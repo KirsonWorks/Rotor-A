@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://se5kphkw2168"]
+
+[ext_resource type="Texture2D" uid="uid://dx0n7k0hw16h3" path="res://asset/texture/fx/flare.png" id="2_4lwqj"]
+[ext_resource type="Texture2D" uid="uid://b2lkc308ixexy" path="res://asset/texture/fx/exp.png" id="2_8gffw"]
+
+[sub_resource type="Animation" id="Animation_grlqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteHitFlare:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0q3ks"]
+resource_name = "explosion"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteExplosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteExplosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 14]
+}
+
+[sub_resource type="Animation" id="Animation_d51ro"]
+resource_name = "hitflare"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteHitFlare:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtnik"]
+_data = {
+"RESET": SubResource("Animation_grlqn"),
+"explosion": SubResource("Animation_0q3ks"),
+"hitflare": SubResource("Animation_d51ro")
+}
+
+[node name="LightFx" type="Node3D"]
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+callback_mode_method = 1
+callback_mode_discrete = 0
+libraries = {
+"": SubResource("AnimationLibrary_vtnik")
+}
+next/explosion = &"RESET"
+next/hitflare = &"RESET"
+
+[node name="SpriteExplosion" type="Sprite3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+visible = false
+cast_shadow = 0
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = ExtResource("2_8gffw")
+hframes = 4
+vframes = 4
+
+[node name="SpriteHitFlare" type="Sprite3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+visible = false
+cast_shadow = 0
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = ExtResource("2_4lwqj")

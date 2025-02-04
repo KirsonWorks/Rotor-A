@@ -1,0 +1,289 @@
+[gd_scene load_steps=15 format=3 uid="uid://rrraleqsl1qb"]
+
+[ext_resource type="Script" path="res://script/scene_game.gd" id="1_g31p3"]
+[ext_resource type="PackedScene" uid="uid://mgv6wly5ufm7" path="res://scene/level/level_01.tscn" id="2_mo0s7"]
+[ext_resource type="PackedScene" uid="uid://c6fo5yroqtnxk" path="res://scene/level/level_02.tscn" id="3_k3w0n"]
+[ext_resource type="Script" path="res://script/actor/camera.gd" id="3_ymevw"]
+[ext_resource type="PackedScene" uid="uid://bpnstx4m37wpp" path="res://scene/level/level_03.tscn" id="4_f6ytv"]
+[ext_resource type="PackedScene" uid="uid://1w3dkx07miky" path="res://scene/actor/player/player.tscn" id="4_rb1ys"]
+[ext_resource type="Environment" uid="uid://ccy8h86vwkkmf" path="res://resource/env.tres" id="8_8jvqh"]
+[ext_resource type="Texture2D" uid="uid://dbl08il7fmvh3" path="res://asset/texture/ui/healthbar/healthbar_under.png" id="22_jix4g"]
+[ext_resource type="Script" path="res://script/debug.gd" id="23_ux1y7"]
+[ext_resource type="Texture2D" uid="uid://bpwp0eqsts7pk" path="res://asset/texture/ui/healthbar/healthbar_progress.png" id="23_vd2bv"]
+[ext_resource type="FontVariation" uid="uid://cj6w8exsmshk8" path="res://resource/font_main.tres" id="24_vd2bv"]
+[ext_resource type="PackedScene" uid="uid://c26dmlbshr7m5" path="res://scene/fx/cloud.tscn" id="25_1fv41"]
+[ext_resource type="Script" path="res://script/ui/icon_repeater.gd" id="29_1fv41"]
+[ext_resource type="Texture2D" uid="uid://dy5e4xetmxh4q" path="res://asset/texture/ui/icon-life.png" id="30_6cxh4"]
+
+[node name="Game" type="Node3D"]
+process_mode = 1
+script = ExtResource("1_g31p3")
+LEVELS = Array[PackedScene]([ExtResource("2_mo0s7"), ExtResource("3_k3w0n"), ExtResource("4_f6ytv")])
+
+[node name="PlayerHolder" type="Node3D" parent="."]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
+
+[node name="Player" parent="PlayerHolder" instance=ExtResource("4_rb1ys")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55.4428)
+MOUSE_SENSITIVITY = 0.05
+BOUND_FRONT = -50.0
+BOUND_BACK = 0.0
+ARMOR = 7.0
+COLLISION_MASK = 28
+
+[node name="Camera" type="Camera3D" parent="PlayerHolder"]
+transform = Transform3D(1, 0, 0, 0, 0.788011, 0.615662, 0, -0.615662, 0.788011, 0, 55, 35)
+keep_aspect = 0
+environment = ExtResource("8_8jvqh")
+current = true
+fov = 70.0
+far = 500.0
+script = ExtResource("3_ymevw")
+BOUND_X = 40.0
+TARGET_PATH = NodePath("../Player")
+
+[node name="Env" type="WorldEnvironment" parent="."]
+environment = ExtResource("8_8jvqh")
+
+[node name="Clouds" parent="." instance=ExtResource("25_1fv41")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PauseDialog" type="Panel" parent="HUD"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -90.5
+offset_right = 190.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PauseDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PauseDialog/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HUD/PauseDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSE"
+
+[node name="ButtonContinue" type="Button" parent="HUD/PauseDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="ButtonRestart" type="Button" parent="HUD/PauseDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="ButtonExit" type="Button" parent="HUD/PauseDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAINMENU"
+
+[node name="LevelCompleteDialog" type="Panel" parent="HUD"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -90.5
+offset_right = 190.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/LevelCompleteDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/LevelCompleteDialog/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HUD/LevelCompleteDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "VICTORY"
+
+[node name="ButtonNextLevel" type="Button" parent="HUD/LevelCompleteDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "NEXTLEVEL"
+
+[node name="ButtonRestart" type="Button" parent="HUD/LevelCompleteDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="ButtonExit" type="Button" parent="HUD/LevelCompleteDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAINMENU"
+
+[node name="GameoverDialog" type="Panel" parent="HUD"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -70.0
+offset_right = 190.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/GameoverDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/GameoverDialog/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HUD/GameoverDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAMEOVER"
+
+[node name="ButtonRestart" type="Button" parent="HUD/GameoverDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="ButtonExit" type="Button" parent="HUD/GameoverDialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAINMENU"
+
+[node name="Debug" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("23_ux1y7")
+
+[node name="ObjectCount" type="Label" parent="HUD/Debug"]
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 23.0
+text = "22970/3186"
+
+[node name="HealthPanel" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -112.0
+offset_right = 363.0
+offset_bottom = -21.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="BorderHealthBar" type="ColorRect" parent="HUD/HealthPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 35.0
+offset_right = 193.0
+offset_bottom = 51.0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="Margin" type="MarginContainer" parent="HUD/HealthPanel/BorderHealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+metadata/_edit_lock_ = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="HUD/HealthPanel/BorderHealthBar/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("22_jix4g")
+texture_progress = ExtResource("23_vd2bv")
+tint_over = Color(1, 1, 1, 0.301961)
+
+[node name="LabelHealth" type="Label" parent="HUD/HealthPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_right = 93.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.757969, 0.557079, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.784314)
+theme_override_fonts/font = ExtResource("24_vd2bv")
+theme_override_font_sizes/font_size = 25
+text = "50"
+
+[node name="LifeRepeater" type="HBoxContainer" parent="HUD/HealthPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -36.0
+offset_right = 320.0
+offset_bottom = -3.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = -1
+script = ExtResource("29_1fv41")
+ICON_TEXTURE = ExtResource("30_6cxh4")
+
+[connection signal="died" from="PlayerHolder/Player" to="." method="_on_player_died"]
+[connection signal="health_changed" from="PlayerHolder/Player" to="." method="_on_player_health_changed"]
+[connection signal="pressed" from="HUD/PauseDialog/MarginContainer/VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="HUD/PauseDialog/MarginContainer/VBoxContainer/ButtonRestart" to="." method="_next_or_restart_level" binds= [false]]
+[connection signal="pressed" from="HUD/PauseDialog/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="HUD/LevelCompleteDialog/MarginContainer/VBoxContainer/ButtonNextLevel" to="." method="_next_or_restart_level" binds= [true]]
+[connection signal="pressed" from="HUD/LevelCompleteDialog/MarginContainer/VBoxContainer/ButtonRestart" to="." method="_next_or_restart_level" binds= [false]]
+[connection signal="pressed" from="HUD/LevelCompleteDialog/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="HUD/GameoverDialog/MarginContainer/VBoxContainer/ButtonRestart" to="." method="_next_or_restart_level" binds= [false]]
+[connection signal="pressed" from="HUD/GameoverDialog/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqwl0i8iriton"]
+
+[ext_resource type="ArrayMesh" uid="uid://n31w3iyrxkus" path="res://asset/model/copter/rotor.obj" id="1_rfb3d"]
+[ext_resource type="Material" uid="uid://df6gbn4gpbb1a" path="res://asset/model/copter/rotor_yellow.material" id="2_qnmvp"]
+[ext_resource type="Script" path="res://script/actor/misc/rotary_object.gd" id="3_1e2lh"]
+[ext_resource type="ArrayMesh" uid="uid://da20rb0o0mjx0" path="res://asset/model/copter/rotor_shadow.obj" id="4_5dpw4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gf8g"]
+cull_mode = 1
+disable_ambient_light = true
+disable_fog = true
+metallic_specular = 0.0
+disable_receive_shadows = true
+
+[node name="RotorYellow" type="MeshInstance3D"]
+transform = Transform3D(0.847958, 0, -0.530387, 0, 1, 0, 0.530387, 0, 0.847958, 0, 0, 0)
+mesh = ExtResource("1_rfb3d")
+surface_material_override/0 = ExtResource("2_qnmvp")
+script = ExtResource("3_1e2lh")
+
+[node name="ShadowCaster" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.637329, 0, 0.398641, 0, 1, 0, -0.398641, 0, 0.637329, 0, 0, 0)
+mesh = ExtResource("4_5dpw4")
+surface_material_override/0 = SubResource("StandardMaterial3D_0gf8g")

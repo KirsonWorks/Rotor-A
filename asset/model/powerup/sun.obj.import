@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dvbq7gxa1ncqk"
+path="res://.godot/imported/sun.obj-7bfce48c009c5094730a52475cc3f158.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sun.obj-7bfce48c009c5094730a52475cc3f158.mesh"]
+
+source_file="res://asset/model/powerup/sun.obj"
+dest_files=["res://.godot/imported/sun.obj-7bfce48c009c5094730a52475cc3f158.mesh", "res://.godot/imported/sun.obj-7bfce48c009c5094730a52475cc3f158.mesh"]
+
+[params]
+
+generate_tangents=false
+scale_mesh=Vector3(1.7, 1.7, 1.7)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

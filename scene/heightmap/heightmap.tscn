@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=4 uid="uid://jnckwgbamjc1"]
+
+[ext_resource type="Script" uid="uid://b2mxmrjqfgjad" path="res://script/heightmap/heightmap.gd" id="1_ajbol"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_imer8"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 1, 1e-05, 1),
+"format": 34359742465,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAMAAQAEAAMAAQACAAQAAgAFAAQAAgADAAUAAwAGAAUAAwAEAAYABAAHAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAIC/AAAAAAAAAAAAAIC/AACAvwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+}]
+
+[node name="HighmapMesh" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_imer8")
+script = ExtResource("1_ajbol")

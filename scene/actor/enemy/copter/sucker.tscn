@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://xiga4n6ygx18"]
+
+[ext_resource type="Script" path="res://script/actor/enemy/enemy_copter.gd" id="1_ee0w1"]
+[ext_resource type="ArrayMesh" uid="uid://cpvcljbqd6pnk" path="res://asset/model/copter/sucker/sucker.obj" id="2_ee0w1"]
+[ext_resource type="PackedScene" uid="uid://2tubrliubdyn" path="res://scene/actor/misc/rotor_red.tscn" id="3_mw1ib"]
+[ext_resource type="PackedScene" uid="uid://x200ak3jngae" path="res://scene/fx/navigation light/navigation_light_red.tscn" id="4_mw1ib"]
+[ext_resource type="PackedScene" uid="uid://r1aawg8jnitr" path="res://scene/fx/muzzleflash.tscn" id="4_t0vkm"]
+[ext_resource type="PackedScene" uid="uid://02y6ocqunst5" path="res://scene/actor/weapon/weapon_base.tscn" id="5_s1w6m"]
+[ext_resource type="PackedScene" uid="uid://31l6lvled0p0" path="res://scene/fx/navigation light/navigation_light_green.tscn" id="5_ulhnu"]
+[ext_resource type="PackedScene" uid="uid://dakjfltw10aj8" path="res://scene/actor/weapon/weapon_specs.tscn" id="6_hhftv"]
+[ext_resource type="PackedScene" uid="uid://bmimjobsohdlb" path="res://scene/actor/weapon/projectile_bullet.tscn" id="6_s1w6m"]
+
+[node name="Sucker" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_ee0w1")
+SPEED = 35.0
+WEAPON_PATH = NodePath("WeaponBase")
+COLLISION_LAYER = 8
+COLLISION_MASK = 1
+COLLISION_MESH_PATH = NodePath("Copter")
+metadata/_custom_type_script = ExtResource("1_ee0w1")
+
+[node name="Copter" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_ee0w1")
+skeleton = NodePath("../..")
+
+[node name="Propeller" parent="Copter" instance=ExtResource("3_mw1ib")]
+transform = Transform3D(0.847958, 0, -0.530387, 0, 1, 0, 0.530387, 0, 0.847958, 0, 4.712, 0)
+
+[node name="NavigationLightRed" parent="Copter" instance=ExtResource("4_mw1ib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42949, 1.74121, -0.523913)
+
+[node name="NavigationLightGreen" parent="Copter" instance=ExtResource("5_ulhnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48868, 1.74121, -0.523914)
+skeleton = NodePath("../NavigationLightRed")
+
+[node name="MuzzleFlash" parent="Copter" instance=ExtResource("4_t0vkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056777, 1.20845, -6.22082)
+
+[node name="WeaponBase" parent="." instance=ExtResource("5_s1w6m")]
+RATE_OF_FIRE = 80
+PROJECTILE_SCENE = ExtResource("6_s1w6m")
+PROJECTILE_COLLISION_LAYER = 16
+PROJECTILE_COLLISION_MASK = 1
+
+[node name="Specs1" parent="WeaponBase" instance=ExtResource("6_hhftv")]
+MUZZLES = Array[NodePath]([NodePath("../../Copter/MuzzleFlash")])

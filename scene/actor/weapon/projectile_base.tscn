@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw78w3m1rf8pl"]
+
+[ext_resource type="Script" uid="uid://dg7w1t5iue2tb" path="res://script/actor/weapon/projectile_base.gd" id="1_8aw6n"]
+[ext_resource type="Script" uid="uid://b8ixqia1qul11" path="res://script/actor/actor.gd" id="2_doxch"]
+
+[node name="ProjectileBase" type="Node3D"]
+script = ExtResource("1_8aw6n")
+metadata/_custom_type_script = ExtResource("2_doxch")

@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cj6w8exsmshk8"]
+
+[ext_resource type="FontFile" uid="uid://ddhjeycqvyur1" path="res://asset/font/LCD14.otf" id="1_oxu5n"]
+
+[resource]
+base_font = ExtResource("1_oxu5n")
+baseline_offset = 0.35

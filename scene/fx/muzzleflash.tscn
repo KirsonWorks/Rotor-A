@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://r1aawg8jnitr"]
+
+[ext_resource type="ArrayMesh" uid="uid://jrbyo0qlj1g1" path="res://asset/model/fx/muzzle-flash.obj" id="1_l38d2"]
+[ext_resource type="Shader" uid="uid://gwkyx3ljnx11" path="res://asset/shader/fx/sprite.gdshader" id="2_iqvjt"]
+[ext_resource type="Texture2D" uid="uid://bj8syjxhxqmq0" path="res://asset/texture/fx/flare.jpg" id="3_k3uk4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l38d2"]
+render_priority = -1
+shader = ExtResource("2_iqvjt")
+shader_parameter/sprite = ExtResource("3_k3uk4")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/frames = Vector2i(4, 4)
+shader_parameter/frame = 3
+shader_parameter/intensity_min = 0.0
+shader_parameter/intensity_max = 3.5
+shader_parameter/frequency = 0.0
+shader_parameter/is_billboard = false
+
+[node name="MuzzleFlash" type="MeshInstance3D"]
+cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = ExtResource("1_l38d2")
+surface_material_override/0 = SubResource("ShaderMaterial_l38d2")
+metadata/Flash = true
